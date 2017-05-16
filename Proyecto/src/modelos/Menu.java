@@ -17,6 +17,13 @@ public class Menu {
 		this.cod_plato = cod_plato;
 	}
 
+	
+	public Menu(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
 	/**
 	 * @return the precio
 	 */
