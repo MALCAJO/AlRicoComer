@@ -53,6 +53,7 @@ public class BD_alricocomer extends BD_Conecta{
 	}
 	//Listo los restaurantes por código postal
 	public  Vector<Restaurante> listarRestaurantesXzona(String cod_postal){
+		
 		String cadenaSQL="SELECT * from restaurante WHERE cod_postal='"+cod_postal+"'";
 		Vector<Restaurante> listaRes=new Vector<Restaurante>();
 		try{
