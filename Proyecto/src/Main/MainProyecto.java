@@ -1,3 +1,4 @@
+package Main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +13,6 @@ public class MainProyecto {
 		int cod_postal, menu = 0;
 		String usuario;
 		String contrasenia;
-		
 
 		do {
 			try {
