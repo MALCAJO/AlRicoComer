@@ -5,12 +5,16 @@ public class Restaurante {
 	private String direccion;
 	private int cod_restaurante;
 	private int cod_postal;
+	private int telefono;
+	private String cif;
 	
-	public Restaurante(String direccion, int cod_restaurante, int cod_postal) {
+	public Restaurante(String direccion, int cod_restaurante, int cod_postal,int telefono,String cif) {
 		super();
 		this.direccion = direccion;
 		this.cod_restaurante = cod_restaurante;
 		this.cod_postal = cod_postal;
+		this.telefono = telefono;
+		this.cif = cif;
 	}
 	
 	/**
@@ -48,6 +52,30 @@ public class Restaurante {
 	 */
 	public void setCod_postal(int cod_postal) {
 		this.cod_postal = cod_postal;
+	}
+	/**
+	 * @return the telefono
+	 */
+	public int getTelefono() {
+		return telefono;
+	}
+	/**
+	 * @param telefono the telefono to set
+	 */
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+	/**
+	 * @return the cif
+	 */
+	public String getCif() {
+		return cif;
+	}
+	/**
+	 * @param cif the cif to set
+	 */
+	public void setCif(String cif) {
+		this.cif = cif;
 	}
 	
 }
