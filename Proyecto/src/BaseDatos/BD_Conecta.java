@@ -25,7 +25,7 @@ public class BD_Conecta {
 	private int portNumber;
 	private Properties prop;
 	
-	public  BD_Conector(String fileName) {	
+	public  BD_Conecta(String fileName) {	
 	   try{
 		this.prop = new Properties();
 	    prop.loadFromXML(Files.newInputStream(Paths.get(fileName)));

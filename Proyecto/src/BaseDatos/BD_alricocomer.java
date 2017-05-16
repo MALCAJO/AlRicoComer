@@ -3,7 +3,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.time.*;
-import proyecto.Main;
+import Main.MainProyecto;
 import modelos.*;
 
 
@@ -11,8 +11,9 @@ public class BD_alricocomer extends BD_Conecta{
 	private static Statement s;	
 	private static ResultSet reg;
 	
-	public BD_Conecta(String file){
-		super(file);
+	public BD_alricocomer(String fileName) {
+		super(fileName);
+		// TODO Auto-generated constructor stub
 	}
 	
 	//Este metodo añade un menu a un restaurante determinado.
