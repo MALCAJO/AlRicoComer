@@ -42,6 +42,7 @@ public class BD_Menu extends BD_Conecta{
 			this.abrir();
 			s=c.createStatement();
 			int filas=s.executeUpdate(cadenaSQL);
+			
 			s.close();
 			this.cerrar();
 			return filas;

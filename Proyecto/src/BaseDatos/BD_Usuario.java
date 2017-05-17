@@ -67,6 +67,7 @@ public class BD_Usuario extends BD_Conecta{
 //Método para verificar el login
 	public int verificar_login(String email, String contrasena){
 		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
+		
 		try{
 			this.abrir();
 			s=c.createStatement();
