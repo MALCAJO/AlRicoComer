@@ -27,7 +27,8 @@ public class BD_Usuario extends BD_Conecta{
 			this.cerrar();
 			return filas;
 		}
-		catch ( SQLException e){			
+		catch ( SQLException e){	
+			this.cerrar();
 			return -1;
 		}
 	}
@@ -42,7 +43,8 @@ public class BD_Usuario extends BD_Conecta{
 			this.cerrar();
 			return filas;
 		}
-		catch ( SQLException e){			
+		catch ( SQLException e){
+			this.cerrar();
 			return -1;
 		}
 	}
@@ -57,7 +59,8 @@ public class BD_Usuario extends BD_Conecta{
 			this.cerrar();
 			return filas;
 		}
-		catch ( SQLException e){			
+		catch ( SQLException e){
+			this.cerrar();
 			return -1;
 		}
 	}
@@ -72,7 +75,8 @@ public class BD_Usuario extends BD_Conecta{
 			this.cerrar();
 			return filas;
 		}
-		catch ( SQLException e){			
+		catch ( SQLException e){	
+			this.cerrar();
 			return -1;
 		}
 	}
