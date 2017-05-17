@@ -48,7 +48,7 @@ public class BD_Usuario extends BD_Conecta{
 	}
 //Método para cambiar contraseña de  usuario.
 	public int editar_contra_usuario( Usu_Registrado usu){
-		String cadenaSQL="UPDATE usuario_registrado SET `contrasena`= '" + usu.getContraseña() + "' WHERE `email`= '" + usu.getEmail()+"' ";
+		String cadenaSQL="UPDATE usuario_registrado SET 'contrasena'= '" + usu.getContraseña() + "' WHERE `email`= '" + usu.getEmail()+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -62,8 +62,8 @@ public class BD_Usuario extends BD_Conecta{
 		}
 	}
 //Método para verificar el login
-	public int verificar_login(String email){
-		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'";
+	public int verificar_login(String email, String contrasena){
+		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
 		try{
 			this.abrir();
 			s=c.createStatement();
