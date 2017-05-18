@@ -20,8 +20,9 @@ public class MainProyecto {
 		int cod_postal, menu = 0, codres;
 		String email;
 		String contrasena;
-		int codpos;
+		int codpos=0;
 		String direc, regist;
+		String direccion;
 
 
 		BD_Menu bdmenu=new BD_Menu("base_propiedades.xml");
@@ -62,57 +63,62 @@ public class MainProyecto {
 					email = br.readLine();
 					System.out.println("contraseña:");
 					contrasena = br.readLine();
-					int filas = bdusu.verificar_login(email, contrasena);
-					switch(filas){
-					case 0:
-						System.out.println("el usuario y la contraseña no coinciden");
-						break;
+					Usu_Registrado usuarior = bdusu.verificar_login(email, contrasena);
 
-					case 1:
-						do{
-							System.out.println("quieres realizar el pedido en tu direccion habitual? ");
-							direc = br.readLine().toUpperCase();
-						}while(!direc.equals("SI")&!direc.equals("NO"));
-						if (direc.equals("SI")){
-
-							//puti gib
-							//main
-							
-						}else{
-							if(direc.equals("NO")){
-								System.out.println("conectado");
-								System.out.println("dime un codigo postal: ");
-								codpos = Integer.parseInt(br.readLine());
-								Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
-								if (restaurantes==null){
-									System.out.println("En este momento no podemos realizar la operación");
-									break;
-								}
-								System.out.println("Listado de restaurantes");
-								for (int i=0;i<restaurantes.size();i++)
-									System.out.println((i+1)+ ".- "+restaurantes.get(i));
-								System.out.print("dime el restaurante que quieres");
-								codres = Integer.parseInt(br.readLine());
-							}}
+					if(usuarior==null)
+						System.out.println("error, no se ha podido conectar");					
+					else
+						if (usuarior.getApellidos()==null)
+							System.out.println("el usuario y la contraseña no coinciden");
+						else{
+							do{
+								System.out.println("quieres realizar el pedido en tu direccion habitual? ");
+								direc = br.readLine().toUpperCase();
+							}while(!direc.equals("SI")&!direc.equals("NO"));
+							if (direc.equals("SI")){
+								System.out.println(cod_postal = usuarior.getCod_postal());
+								System.out.println(direccion = usuarior.getDireccion_habitual());
 
 
 
+							}else{
+								if(direc.equals("NO")){
+									try{
+									do{
+										System.out.println("dime un codigo postal: ");
+										codpos = Integer.parseInt(br.readLine());
+									}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
+									}catch(NumberFormatException e){
+										System.out.println(e.getMessage());
+									}
+									Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+									if (restaurantes==null){
+										System.out.println("En este momento no podemos realizar la operación");
+
+									}else{
+										System.out.println("Listado de restaurantes");
+										for (int i=0;i<restaurantes.size();i++)
+											System.out.println((i+1)+ ".- "+restaurantes.get(i));
+										System.out.print("dime el restaurante que quieres");
+										codres = Integer.parseInt(br.readLine());
+
+									}}}
 
 
-						break;
 
-					case -1:
-						System.out.println("error, no se ha podido conectar");
-						break;
-					}
+
+
+							break;
+
+						}
 				}
 				if(regist.equals("NO")){
-					
+
 				}
 
 
 
-				break;
+
 
 			case 2:
 
