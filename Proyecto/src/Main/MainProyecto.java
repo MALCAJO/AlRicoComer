@@ -77,14 +77,18 @@ public class MainProyecto {
 							}while(!direc.equals("SI")&!direc.equals("NO"));
 							if (direc.equals("SI")){
 								//quitar los syso
-								System.out.println(cod_postal = usuarior.getCod_postal());
 								System.out.println(direccion = usuarior.getDireccion_habitual());
-
+								cod_postal = usuarior.getCod_postal();
 								System.out.println("estos son los restaurantes del codigo postal");
+								Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(cod_postal);
+								for (i=0;i<restaurantes.size();i++)
+									System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
 
 
 							}else{
+								if(direc.equals("NO")){
 
+								}
 							}
 							if(direc.equals("NO")){
 								try{
@@ -116,7 +120,7 @@ public class MainProyecto {
 
 				}
 				//problem
-				
+
 				if(regist.equals("NO")){
 					try{
 						//do{
@@ -138,6 +142,7 @@ public class MainProyecto {
 						codres = Integer.parseInt(br.readLine());
 
 					}
+					break;
 				}
 
 
