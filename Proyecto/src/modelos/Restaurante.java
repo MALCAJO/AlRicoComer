@@ -77,5 +77,13 @@ public class Restaurante {
 	public void setCif(String cif) {
 		this.cif = cif;
 	}
+
+	@Override
+	public String toString() {
+		return "Restaurante [direccion=" + direccion + ", cod_restaurante=" + cod_restaurante + ", cod_postal="
+				+ cod_postal + ", telefono=" + telefono + ", cif=" + cif + "]";
+	}
+	
+	
 	
 }
