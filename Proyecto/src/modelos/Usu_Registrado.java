@@ -6,22 +6,38 @@ public class Usu_Registrado extends Usuario{
 	private String contraseña;
 	private String direccion_habitual;
 	private String apellidos;
+	private int cod_oferta;
 	
 	public Usu_Registrado(String direccion_entrega, int telefono, String email, int cod_postal, String nombre,
-			String apellidos,String contraseña, String direccion_habitual) {
+			String apellidos,String contraseña, String direccion_habitual,int cod_oferta) {
 		super(direccion_entrega, telefono, email, cod_postal);
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.contraseña = contraseña;
 		this.direccion_habitual = direccion_habitual;
+		this.cod_oferta = cod_oferta;
 	}
 	
 	
+
 	public Usu_Registrado(String email,  String contraseña) {
 		super("", 0, email, 0);
 		this.contraseña = contraseña;
 	}
 
+	/**
+	 * @return the cod_oferta
+	 */
+	public int getCod_oferta() {
+		return cod_oferta;
+	}
+
+	/**
+	 * @param cod_oferta the cod_oferta to set
+	 */
+	public void setCod_oferta(int cod_oferta) {
+		this.cod_oferta = cod_oferta;
+	}
 
 	/**
 	 * @return the nombre

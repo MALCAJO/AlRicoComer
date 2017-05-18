@@ -75,7 +75,7 @@ public class BD_Usuario extends BD_Conecta{
 			reg=s.executeQuery(cadenaSQL);
 			if ( reg.next()){
 				
-				Usuario.setCod_postal(reg.getInt("cod_oferta"));
+				Usuario.setCod_oferta(reg.getInt("cod_oferta"));
 				Usuario.setEmail(reg.getString("email"));
 				Usuario.setCod_postal(reg.getInt("cod_postal"));
 				Usuario.setNombre(reg.getString("nombre"));
