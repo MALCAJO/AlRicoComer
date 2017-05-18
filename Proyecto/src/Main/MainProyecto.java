@@ -141,7 +141,7 @@ public class MainProyecto {
 						System.out.print("dime el restaurante que quieres");
 						codres = Integer.parseInt(br.readLine());
 
-					}
+					}//error
 					break;
 				}
 
