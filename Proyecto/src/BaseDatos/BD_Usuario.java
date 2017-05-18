@@ -74,14 +74,14 @@ public class BD_Usuario extends BD_Conecta{
 			s=c.createStatement();
 			reg=s.executeQuery(cadenaSQL);
 			if ( reg.next()){
-				Usuario.setDireccion_entrega(reg.getString("direccion_entrega"));
-				Usuario.setTelefono(reg.getInt("telefono"));
+				
+				Usuario.setCod_postal(reg.getInt("cod_oferta"));
 				Usuario.setEmail(reg.getString("email"));
 				Usuario.setCod_postal(reg.getInt("cod_postal"));
 				Usuario.setNombre(reg.getString("nombre"));
 				Usuario.setApellidos(reg.getString("apellidos"));
-				Usuario.setContraseña(reg.getString("contraseña"));
-				Usuario.setDireccion_habitual(reg.getString("direccion_habitual"));							
+				Usuario.setContraseña(reg.getString("contrasena"));
+				Usuario.setDireccion_habitual(reg.getString("direccion"));							
 			}
 			s.close();
 			this.cerrar();
