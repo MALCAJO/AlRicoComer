@@ -21,7 +21,7 @@ public class MainProyecto {
 		String email;
 		String contrasena;
 		int codpos;
-		String direc;
+		String direc, regist;
 		int loco;
 
 		BD_Menu bdmenu=new BD_Menu("base_propiedades.xml");
@@ -50,15 +50,22 @@ public class MainProyecto {
 				
 				//cambiar a usuario registrado o no.
 				
+				do{
+					System.out.println("eres un usuario registrado?");
+					regist = br.readLine().toUpperCase();
+				}while(!regist.equals("SI") && !regist.equals("NO"));
+				
+				
+				if (regist.equals("SI")){
 				System.out.println("login");
 				System.out.println("email:");
 				email = br.readLine();
-				System.out.println("contraseÃ±a:");
+				System.out.println("contraseña:");
 				contrasena = br.readLine();
 				int filas = bdusu.verificar_login(email, contrasena);
 				switch(filas){
 				case 0:
-					System.out.println("el usuario y la contraseÃ±a no coinciden");
+					System.out.println("el usuario y la contraseña no coinciden");
 					break;
 
 				case 1:
@@ -68,7 +75,9 @@ public class MainProyecto {
 					}while(!direc.equals("SI")&!direc.equals("NO"));
 					if (direc.equals("SI")){
 						
-					
+						//mod
+						
+						//mierda de github
 					}else{
 						if(direc.equals("NO")){
 							System.out.println("conectado");
@@ -76,7 +85,7 @@ public class MainProyecto {
 							codpos = Integer.parseInt(br.readLine());
 							Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
 							if (restaurantes==null){
-								System.out.println("En este momento no podemos realizar la operaciÃ³n");
+								System.out.println("En este momento no podemos realizar la operación");
 								break;
 							}
 							System.out.println("Listado de restaurantes");
@@ -96,7 +105,7 @@ public class MainProyecto {
 					System.out.println("error, no se ha podido conectar");
 					break;
 				}
-
+				}
 
 
 
