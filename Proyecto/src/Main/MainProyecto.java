@@ -120,7 +120,7 @@ public class MainProyecto {
 
 				}
 				//problem
-//a
+//abvhnjcghjkcgkvhjkcvhjkcg
 				if(regist.equals("NO")){
 					try{
 						//do{
