@@ -75,7 +75,7 @@ public class MainProyecto {
 						}while(!direc.equals("SI")&!direc.equals("NO"));
 						if (direc.equals("SI")){
 
-							
+							//puti gib
 							
 						}else{
 							if(direc.equals("NO")){
