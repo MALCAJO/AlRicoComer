@@ -115,7 +115,8 @@ public class MainProyecto {
 					break;
 
 				}
-
+				//problem
+				
 				if(regist.equals("NO")){
 					try{
 						//do{
