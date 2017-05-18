@@ -79,64 +79,64 @@ public class MainProyecto {
 								//quitar los syso
 								System.out.println(cod_postal = usuarior.getCod_postal());
 								System.out.println(direccion = usuarior.getDireccion_habitual());
-								
+
 								System.out.println("estos son los restaurantes del codigo postal");
-								
-								
+
+
 							}else{
-								
+
 							}
-								if(direc.equals("NO")){
-									try{
+							if(direc.equals("NO")){
+								try{
 									do{
 										System.out.println("dime un codigo postal: ");
 										codpos = Integer.parseInt(br.readLine());
 									}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
-									}catch(NumberFormatException e){
-										System.out.println(e.getMessage());
-									}
-									Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
-									if (restaurantes==null){
-										System.out.println("En este momento no podemos realizar la operación");
+								}catch(NumberFormatException e){
+									System.out.println(e.getMessage());
+								}
+								Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+								if (restaurantes==null){
+									System.out.println("En este momento no podemos realizar la operación");
 
-									}else{
-										System.out.println("Listado de restaurantes");
-										for (i=0;i<restaurantes.size();i++)
-											System.out.println((i+1)+ ".- "+restaurantes.get(i));
-										System.out.print("dime el restaurante que quieres");
-										codres = Integer.parseInt(br.readLine());
+								}else{
+									System.out.println("Listado de restaurantes");
+									for (i=0;i<restaurantes.size();i++)
+										System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+									System.out.print("dime el restaurante que quieres");
+									codres = Integer.parseInt(br.readLine());
 
-									}}}
-
-
+								}}}
 
 
 
-							break;
 
-						}
-				
+
+					break;
+
+				}
+
 				if(regist.equals("NO")){
 					try{
 						//do{
-							System.out.println("dime un codigo postal: ");
-							codpos = Integer.parseInt(br.readLine());
+						System.out.println("dime un codigo postal: ");
+						codpos = Integer.parseInt(br.readLine());
 						//}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
-						}catch(NumberFormatException e){
-							System.out.println(e.getMessage());
-						}
-						Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
-						if (restaurantes==null){
-							System.out.println("En este momento no podemos realizar la operación");
+					}catch(NumberFormatException e){
+						System.out.println(e.getMessage());
+					}
+					Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+					if (restaurantes==null){
+						System.out.println("En este momento no podemos realizar la operación");
 
-						}else{
-							System.out.println("Listado de restaurantes");
-							for (i=0;i<restaurantes.size();i++)
-								System.out.println((i+1)+ ".- "+bdrest.listarRestaurantesXzona(codpos));
-							System.out.print("dime el restaurante que quieres");
-							codres = Integer.parseInt(br.readLine());
+					}else{
+						System.out.println("Listado de restaurantes");
+						for (i=0;i<restaurantes.size();i++)
+							System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+						System.out.print("dime el restaurante que quieres");
+						codres = Integer.parseInt(br.readLine());
 
-						}
+					}
 				}
 
 
