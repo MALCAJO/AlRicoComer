@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2017 a las 08:23:16
+-- Tiempo de generación: 18-05-2017 a las 08:38:08
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -131,7 +131,14 @@ CREATE TABLE IF NOT EXISTS `restaurante` (
   `telefono` int(9) DEFAULT NULL,
   `cif` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`cod_restaurante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `restaurante`
+--
+
+INSERT INTO `restaurante` (`cod_restaurante`, `nombre`, `direccion`, `cod_postal`, `telefono`, `cif`) VALUES
+(1, 'chino mandalin', 'langstrass', 28007, 123456789, '123456789x');
 
 -- --------------------------------------------------------
 

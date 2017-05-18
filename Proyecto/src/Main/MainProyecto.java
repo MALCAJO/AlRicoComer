@@ -23,7 +23,7 @@ public class MainProyecto {
 		int codpos=0;
 		String direc, regist;
 		String direccion;
-
+		int i=0;
 
 		BD_Menu bdmenu=new BD_Menu("base_propiedades.xml");
 		BD_Restaurante bdrest=new BD_Restaurante("base_propiedades.xml");		
@@ -66,7 +66,7 @@ public class MainProyecto {
 					Usu_Registrado usuarior = bdusu.verificar_login(email, contrasena);
 
 					if(usuarior==null)
-						System.out.println("error, no se ha podido conectar");					
+						System.out.println("error, no se ha podido conectar");
 					else
 						if (usuarior.getApellidos()==null)
 							System.out.println("el usuario y la contraseña no coinciden");
@@ -76,12 +76,16 @@ public class MainProyecto {
 								direc = br.readLine().toUpperCase();
 							}while(!direc.equals("SI")&!direc.equals("NO"));
 							if (direc.equals("SI")){
+								//quitar los syso
 								System.out.println(cod_postal = usuarior.getCod_postal());
 								System.out.println(direccion = usuarior.getDireccion_habitual());
-
-
-
+								
+								System.out.println("estos son los restaurantes del codigo postal");
+								
+								
 							}else{
+								
+							}
 								if(direc.equals("NO")){
 									try{
 									do{
@@ -97,7 +101,7 @@ public class MainProyecto {
 
 									}else{
 										System.out.println("Listado de restaurantes");
-										for (int i=0;i<restaurantes.size();i++)
+										for (i=0;i<restaurantes.size();i++)
 											System.out.println((i+1)+ ".- "+restaurantes.get(i));
 										System.out.print("dime el restaurante que quieres");
 										codres = Integer.parseInt(br.readLine());
@@ -111,9 +115,28 @@ public class MainProyecto {
 							break;
 
 						}
-				}
+				
 				if(regist.equals("NO")){
+					try{
+						//do{
+							System.out.println("dime un codigo postal: ");
+							codpos = Integer.parseInt(br.readLine());
+						//}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
+						}catch(NumberFormatException e){
+							System.out.println(e.getMessage());
+						}
+						Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+						if (restaurantes==null){
+							System.out.println("En este momento no podemos realizar la operación");
 
+						}else{
+							System.out.println("Listado de restaurantes");
+							for (i=0;i<restaurantes.size();i++)
+								System.out.println((i+1)+ ".- "+bdrest.listarRestaurantesXzona(codpos));
+							System.out.print("dime el restaurante que quieres");
+							codres = Integer.parseInt(br.readLine());
+
+						}
 				}
 
 
@@ -130,10 +153,6 @@ public class MainProyecto {
 			}
 
 		} while (menu != 4);
-
-		System.out.println("dime tu codigo postal");
-		cod_postal = Integer.parseInt(br.readLine());
-
 	}
 
 }
