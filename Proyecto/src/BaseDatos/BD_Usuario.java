@@ -64,21 +64,32 @@ public class BD_Usuario extends BD_Conecta{
 			return -1;
 		}
 	}
-//Método para verificar el login
-	public int verificar_login(String email, String contrasena){
-		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
+//Método para verificar el login y que devuelve un objeto usuario
+	public Usu_Registrado verificar_login(String email, String contrasena){
 		
+		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
+		Usu_Registrado Usuario=new Usu_Registrado(email,contrasena);		
 		try{
 			this.abrir();
 			s=c.createStatement();
-			int filas=s.executeUpdate(cadenaSQL);
+			reg=s.executeQuery(cadenaSQL);
+			if ( reg.next()){
+				Usuario.setDireccion_entrega(reg.getString("direccion_entrega"));
+				Usuario.setTelefono(reg.getInt("telefono"));
+				Usuario.setEmail(reg.getString("email"));
+				Usuario.setCod_postal(reg.getInt("cod_postal"));
+				Usuario.setNombre(reg.getString("nombre"));
+				Usuario.setApellidos(reg.getString("apellidos"));
+				Usuario.setContraseña(reg.getString("contraseña"));
+				Usuario.setDireccion_habitual(reg.getString("direccion_habitual"));							
+			}
 			s.close();
 			this.cerrar();
-			return filas;
+			return Usuario;
 		}
 		catch ( SQLException e){	
 			this.cerrar();
-			return -1;
+			return null;
 		}
 	}
 }
