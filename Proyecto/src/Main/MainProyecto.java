@@ -69,6 +69,7 @@ public class MainProyecto {
 					if (direc.equals("SI")){
 						
 						//mod
+						//puto git
 						
 						//mierda de github
 					}else{
