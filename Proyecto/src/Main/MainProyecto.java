@@ -68,10 +68,7 @@ public class MainProyecto {
 					}while(!direc.equals("SI")&!direc.equals("NO"));
 					if (direc.equals("SI")){
 						
-						//mod
-						//puto git
-						
-						//mierda de github
+					
 					}else{
 						if(direc.equals("NO")){
 							System.out.println("conectado");
