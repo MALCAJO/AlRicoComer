@@ -6,7 +6,11 @@ import java.time.*;
 import Main.MainProyecto;
 import modelos.Restaurante;
 
-
+/**
+ * 
+ * @author admin
+ *
+ */
 public class BD_Restaurante extends BD_Conecta{
 	private static Statement s;	
 	private static ResultSet reg;
@@ -15,7 +19,11 @@ public class BD_Restaurante extends BD_Conecta{
 		super(fileName);
 		// TODO Auto-generated constructor stub
 	}
-//Método para añadir un restaurante.
+/**
+ * Método para añadir un restaurante.
+ * @param resta
+ * @return
+ */
 	public  int añadir_Restaurante( Restaurante resta){	
 		String cadenaSQL="INSERT INTO restaurante VALUES('" + resta.getCod_restaurante() + "','" +
 				resta.getDireccion()+"','"+ resta.getCod_postal() +"','"+ resta.getTelefono() + "','"+ resta.getCif() +"')"; 				
@@ -32,7 +40,11 @@ public class BD_Restaurante extends BD_Conecta{
 			return -1;
 		}
 	}
-//Método para borrar un restaurante.
+/**
+ * Método para borrar un restaurante.
+ * @param resta
+ * @return
+ */
 	public int borrar_Restaurante( Restaurante resta){
 		String cadenaSQL="DELETE FROM restaurante WHERE `email` = '" + resta.getCod_restaurante()+"' ";
 		try{
@@ -48,7 +60,11 @@ public class BD_Restaurante extends BD_Conecta{
 			return -1;
 		}
 	}
-//Listo los restaurantes por código postal
+/**
+ * Listo los restaurantes por código postal
+ * @param cod_postal
+ * @return
+ */
 	public  Vector<Restaurante> listarRestaurantesXzona(int cod_postal){		
 		String cadenaSQL="SELECT * from restaurante WHERE cod_postal='"+cod_postal+"'";
 		Vector<Restaurante> listaRes=new Vector<Restaurante>();
@@ -58,7 +74,7 @@ public class BD_Restaurante extends BD_Conecta{
 			s=c.createStatement();
 			reg=s.executeQuery(cadenaSQL);
 			while ( reg.next()){
-				listaRes.add(new Restaurante(reg.getString("direccion"),reg.getInt("cod_restaurante"),reg.getInt("cod_postal"),reg.getInt("telefono"),reg.getString("cif")  ));
+				listaRes.add(new Restaurante(reg.getString("direccion"),reg.getString("nombre"),reg.getInt("cod_restaurante"),reg.getInt("cod_postal"),reg.getInt("telefono"),reg.getString("cif")  ));
 			}
 			s.close();
 			this.cerrar();
@@ -69,7 +85,7 @@ public class BD_Restaurante extends BD_Conecta{
 			return null;			
 		}
 	}
-//Listo todos los restaurantes
+//lista los restaurantes
 	public  Vector<Restaurante> listarRestaurantes(){		
 		String cadenaSQL="SELECT * from restaurante";
 		Vector<Restaurante> listaRes=new Vector<Restaurante>();
@@ -78,7 +94,7 @@ public class BD_Restaurante extends BD_Conecta{
 			s=c.createStatement();
 			reg=s.executeQuery(cadenaSQL);
 			while ( reg.next()){
-				listaRes.add(new Restaurante(reg.getString("direccion"),reg.getInt("cod_restaurante"),reg.getInt("cod_postal"),reg.getInt("telefono"),reg.getString("cif")  ));
+				listaRes.add(new Restaurante(reg.getString("direccion"),reg.getString("nombre"),reg.getInt("cod_restaurante"),reg.getInt("cod_postal"),reg.getInt("telefono"),reg.getString("cif")  ));
 			}
 			s.close();
 			this.cerrar();

@@ -72,6 +72,15 @@ public class Menu {
 	public void setCod_plato(int cod_plato) {
 		this.cod_plato = cod_plato;
 	}
+
+/**
+ * @return String de menu
+ */
+	@Override
+	public String toString() {
+		return "Menu [precio=" + precio + ", nombre=" + nombre + ", cod_restaurante=" + cod_restaurante + ", cod_plato="
+				+ cod_plato + "]";
+	}
 	
 	
 }
