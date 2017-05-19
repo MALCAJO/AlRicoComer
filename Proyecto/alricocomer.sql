@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-05-2017 a las 08:56:05
+-- Tiempo de generación: 18-05-2017 a las 08:38:08
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -77,7 +77,14 @@ CREATE TABLE IF NOT EXISTS `ofertas` (
   `descuento` int(11) NOT NULL,
   `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`cod_oferta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=52896 ;
+
+--
+-- Volcado de datos para la tabla `ofertas`
+--
+
+INSERT INTO `ofertas` (`cod_oferta`, `descuento`, `descripcion`) VALUES
+(52895, 5, 'oferta usuario nuevo');
 
 -- --------------------------------------------------------
 
@@ -118,12 +125,20 @@ CREATE TABLE IF NOT EXISTS `personal` (
 
 CREATE TABLE IF NOT EXISTS `restaurante` (
   `cod_restaurante` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cod_postal` int(5) DEFAULT NULL,
   `telefono` int(9) DEFAULT NULL,
   `cif` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`cod_restaurante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `restaurante`
+--
+
+INSERT INTO `restaurante` (`cod_restaurante`, `nombre`, `direccion`, `cod_postal`, `telefono`, `cif`) VALUES
+(1, 'chino mandalin', 'langstrass', 28007, 123456789, '123456789x');
 
 -- --------------------------------------------------------
 
@@ -142,6 +157,13 @@ CREATE TABLE IF NOT EXISTS `usuario_registrado` (
   PRIMARY KEY (`email`),
   KEY `cod_oferta` (`cod_oferta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_registrado`
+--
+
+INSERT INTO `usuario_registrado` (`email`, `contrasena`, `nombre`, `apellidos`, `direccion`, `cod_postal`, `cod_oferta`) VALUES
+('a.tatschke@gmail.com', 'ricocomer', 'alejandro', 'tatschke', 'calle tu madre 89', 28007, 52895);
 
 -- --------------------------------------------------------
 
@@ -176,8 +198,8 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
 -- Filtros para la tabla `historial`
 --
 ALTER TABLE `historial`
-  ADD CONSTRAINT `historial_ibfk_2` FOREIGN KEY (`fecha_hora`) REFERENCES `linea_pedido` (`fecha_hora`),
-  ADD CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`num_pedido`) REFERENCES `linea_pedido` (`num_pedido`);
+  ADD CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`num_pedido`) REFERENCES `linea_pedido` (`num_pedido`),
+  ADD CONSTRAINT `historial_ibfk_2` FOREIGN KEY (`fecha_hora`) REFERENCES `linea_pedido` (`fecha_hora`);
 
 --
 -- Filtros para la tabla `linea_pedido`
@@ -195,8 +217,8 @@ ALTER TABLE `menu`
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`cod_restaurante`) REFERENCES `restaurante` (`cod_restaurante`),
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`cod_personal`) REFERENCES `personal` (`cod_empleado`);
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`cod_personal`) REFERENCES `personal` (`cod_empleado`),
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`cod_restaurante`) REFERENCES `restaurante` (`cod_restaurante`);
 
 --
 -- Filtros para la tabla `usuario_registrado`
