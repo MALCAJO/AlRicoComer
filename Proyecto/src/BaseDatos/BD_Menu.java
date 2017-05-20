@@ -69,7 +69,7 @@ public class BD_Menu extends BD_Conecta{
 		}
 	}
 //metodo que muestra los menus de un restaurante
-	public  Vector<Menu> listarmenusXrestaurante(String cod_restaurante){
+	public  Vector<Menu> listarmenusXrestaurante(int cod_restaurante){
 		String cadenaSQL="SELECT * from menu WHERE cod_restaurante='"+cod_restaurante+"'";
 		Vector<Menu> listaMenu=new Vector<Menu>();
 		try{

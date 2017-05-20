@@ -78,8 +78,8 @@ public class Menu {
  */
 	@Override
 	public String toString() {
-		return "Menu [precio=" + precio + ", nombre=" + nombre + ", cod_restaurante=" + cod_restaurante + ", cod_plato="
-				+ cod_plato + "]";
+		return "Menu: "+ nombre + ", precio: "+precio+"€. Código de plato: "
+				+ cod_plato;
 	}
 	
 	

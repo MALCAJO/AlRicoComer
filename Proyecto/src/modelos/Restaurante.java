@@ -98,8 +98,7 @@ public class Restaurante {
 	 */
 	@Override
 	public String toString() {
-		return "Restaurante [direccion=" + direccion + ", cod_restaurante=" + cod_restaurante + ", cod_postal="
-				+ cod_postal + ", telefono=" + telefono + ", cif=" + cif + "]";
+		return "Restaurante: " + nombre + ", en: "+direccion+", "+cod_postal+". Código: "+cod_restaurante+", télefono: " +telefono;
 	}
 	
 }

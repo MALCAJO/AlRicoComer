@@ -20,6 +20,12 @@ public class Usu_Registrado extends Usuario{
 	
 	
 
+	public Usu_Registrado(String email) {
+		super("", 0, email, 0);
+	}
+
+
+
 	public Usu_Registrado(String email,  String contraseña) {
 		super("", 0, email, 0);
 		this.contraseña = contraseña;
