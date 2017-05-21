@@ -17,7 +17,7 @@ public class BD_Usuario extends BD_Conecta{
 	
 //Método para dar de alta un usuario.
 	public  int alta_usuario( Usu_Registrado usu){	
-		String cadenaSQL="INSERT INTO usuario_registrado VALUES('" + usu.getEmail()+ "','" +usu.getContraseña()+"','"+ usu.getNombre() +"','"+ usu.getApellidos()+"','"+ usu.getDireccion_habitual()+"','"+ usu.getCod_postal() +"','"+ usu.getCod_oferta() +"')"; 				
+		String cadenaSQL="INSERT INTO usuario_registrado VALUES('" + usu.getEmail()+ "','" +usu.getContraseña()+"','"+ usu.getNombre() +"','"+ usu.getApellidos()+"','"+ usu.getDireccion_habitual()+"','"+ usu.getCod_postal() +"','"+ usu.getCod_oferta() +"','"+usu.getTipo()+"')"; 				
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -101,7 +101,8 @@ public class BD_Usuario extends BD_Conecta{
 				Usuario.setNombre(reg.getString("nombre"));
 				Usuario.setApellidos(reg.getString("apellidos"));
 				Usuario.setContraseña(reg.getString("contrasena"));
-				Usuario.setDireccion_habitual(reg.getString("direccion"));							
+				Usuario.setDireccion_habitual(reg.getString("direccion"));
+				Usuario.setTipo(reg.getString("tipo"));
 			}
 			s.close();
 			this.cerrar();

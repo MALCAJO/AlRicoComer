@@ -7,15 +7,17 @@ public class Usu_Registrado extends Usuario{
 	private String direccion_habitual;
 	private String apellidos;
 	private int cod_oferta;
+	private String tipo;
 	
 	public Usu_Registrado(String direccion_entrega, int telefono, String email, int cod_postal, String nombre,
-			String apellidos,String contraseña, String direccion_habitual,int cod_oferta) {
+			String apellidos,String contraseña, String direccion_habitual,int cod_oferta,String tipo) {
 		super(direccion_entrega, telefono, email, cod_postal);
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.contraseña = contraseña;
 		this.direccion_habitual = direccion_habitual;
 		this.cod_oferta = cod_oferta;
+		this.tipo=tipo;
 	}
 	
 	
@@ -70,8 +72,18 @@ public class Usu_Registrado extends Usuario{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
-
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	/**
 	 * @return the contraseña
 	 */

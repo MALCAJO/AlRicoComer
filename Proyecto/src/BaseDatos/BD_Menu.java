@@ -36,8 +36,8 @@ public class BD_Menu extends BD_Conecta{
 		}
 	}
 //Método para borar menus de un restaurante	
-	public int borrar_menu(Menu me){
-		String cadenaSQL="DELETE FROM menu WHERE cod_plato='"+me.getCod_plato()+"' ";
+	public int borrar_menu(int cod_menu){
+		String cadenaSQL="DELETE FROM menu WHERE cod_plato='"+cod_menu+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();

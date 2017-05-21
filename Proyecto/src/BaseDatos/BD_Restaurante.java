@@ -61,12 +61,12 @@ public class BD_Restaurante extends BD_Conecta{
 		}
 	}
 /**
- * Listo los restaurantes por código postal
+ * Listo los restaurantes de un  código postal
  * @param cod_postal
  * @return
  */
 	public  Vector<Restaurante> listarRestaurantesXzona(int cod_postal){		
-		String cadenaSQL="SELECT * from restaurante WHERE cod_postal='"+cod_postal+"'";
+		String cadenaSQL="SELECT * FROM restaurante WHERE cod_postal='"+cod_postal+"'";
 		Vector<Restaurante> listaRes=new Vector<Restaurante>();
 		
 		try{
@@ -85,9 +85,34 @@ public class BD_Restaurante extends BD_Conecta{
 			return null;			
 		}
 	}
-//lista los restaurantes
+	/**
+	 * Busco el código restaurante pasando los parámetros nombre y direccion del restaurante
+	 * @param nombre
+	 * @param direccion
+	 * @return
+	 */
+	/*public int buscar_codrestaurante(String nombre, String direccion){
+		String cadenaSQL="SELECT cod_restaurante FROM restaurante WHERE nombre = '"+nombre+"' AND direccion = '"+direccion+"'";
+		int cod=0;
+		try{
+			this.abrir();
+			s=c.createStatement();
+			cod=s.executeQuery(cadenaSQL);				
+			s.close();
+			this.cerrar();
+			return cod;			
+		}
+		catch ( SQLException e){
+			this.cerrar();
+			return -1;
+		}
+	}*/
+/**
+ * lista todos los restaurantes
+ * @return
+ */
 	public  Vector<Restaurante> listarRestaurantes(){		
-		String cadenaSQL="SELECT * from restaurante";
+		String cadenaSQL="SELECT * FROM restaurante";
 		Vector<Restaurante> listaRes=new Vector<Restaurante>();
 		try{
 			this.abrir();
