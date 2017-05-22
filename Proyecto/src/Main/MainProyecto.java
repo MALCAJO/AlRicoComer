@@ -18,7 +18,7 @@ public class MainProyecto {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int cod_postal, menu = 0, codres;
+		int cod_postal, menu = 0, codres=0;
 		String email;
 		String contrasena;
 		int codpos=0;
@@ -87,12 +87,11 @@ public class MainProyecto {
 
 								System.out.println("que restaurante quieres, escribe su codigo?");
 								codigo = Integer.parseInt(br.readLine());
-								Vector <Menu> menus = bdmenu.listarmenusXrestaurante(codigo);
-								System.out.println(menus);
-								do{
-									System.out.println("salida 4");
-									
-								}while(salida==4);
+								Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+								for (i=0;i<menus.size();i++)
+									System.out.println(menus.get(i).toString());
+								//agregar escoger menu comida
+								
 								
 
 							}else{
@@ -120,9 +119,10 @@ public class MainProyecto {
 										}catch(NumberFormatException e){
 											System.out.println(e.getMessage());
 										}
-										Vector <Menu> menus = bdmenu.listarmenusXrestaurante(codigo);
-										System.out.println(menus);
-
+										Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+										for (i=0;i<menus.size();i++)
+											System.out.println(menus.get(i).toString());
+										//agregar escoger menu comida
 									}}}}
 
 					break;
@@ -146,9 +146,16 @@ public class MainProyecto {
 						System.out.println("Listado de restaurantes");
 						for (i=0;i<restaurantes.size();i++)
 							System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+					try{	
 						System.out.print("dime el restaurante que quieres");
 						codres = Integer.parseInt(br.readLine());
-
+					}catch(NumberFormatException e){
+						System.out.println(e.getMessage());
+					}
+					Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+					for (i=0;i<menus.size();i++)
+						System.out.println(menus.get(i).toString());
+					//agregar escoger menu comida
 					}
 					break;
 				}
@@ -178,7 +185,7 @@ public class MainProyecto {
 						System.out.println("El email introducido ya pertenece a un usuario registrado");
 						break;
 					case -1:
-						System.out.println("Lo sentimo, ha ocurrido un problema durante el registro. Vuelva a intentarlo.");
+						System.out.println("Lo sentimos, ha ocurrido un problema durante el registro. Vuelva a intentarlo.");
 						break;							
 					}
 				}while(filas!=0);	
