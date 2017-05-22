@@ -71,61 +71,82 @@ public class MainProyecto {
 						if (usuarior.getApellidos()==null)
 							System.out.println("el usuario y la contraseña no coinciden");
 						else{
-							do{
-								System.out.println("quieres realizar el pedido en tu direccion habitual? ");
-								direc = br.readLine().toUpperCase();
-							}while(!direc.equals("SI")&!direc.equals("NO"));
+							if(usuarior.getTipo().equals("usuar")){
+								do{
+									System.out.println("quieres realizar el pedido en tu direccion habitual? ");
+									direc = br.readLine().toUpperCase();
+								}while(!direc.equals("SI")&!direc.equals("NO"));
 
-							if (direc.equals("SI")){
-								//quitar los syso
-								System.out.println(direccion = usuarior.getDireccion_habitual());
-								cod_postal = usuarior.getCod_postal();
-								System.out.println("estos son los restaurantes del codigo postal");
-								Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(cod_postal);
-								for (i=0;i<restaurantes.size();i++)
-									System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+								if (direc.equals("SI")){
+									//quitar los syso
+									System.out.println(direccion = usuarior.getDireccion_habitual());
+									cod_postal = usuarior.getCod_postal();
+									System.out.println("estos son los restaurantes del codigo postal");
+									Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(cod_postal);
+									for (i=0;i<restaurantes.size();i++)
+										System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
 
-								System.out.println("que restaurante quieres, escribe su codigo?");
-								codigo = Integer.parseInt(br.readLine());
-								Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
-								for (i=0;i<menus.size();i++)
-									System.out.println(menus.get(i).toString());
-								//agregar escoger menu comida
-								
-								
+									System.out.println("que restaurante quieres, escribe su codigo?");
+									codigo = Integer.parseInt(br.readLine());
+									Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+									for (i=0;i<menus.size();i++)
+										System.out.println(menus.get(i).toString());
+									//agregar escoger menu comida
 
-							}else{
 
-								if(direc.equals("NO")){
-									try{
-										do{
-											System.out.println("dime un codigo postal: ");
-											codpos = Integer.parseInt(br.readLine());
-										}while(codpos<0 || codpos>99999);
-									}catch(NumberFormatException e){
-										System.out.println(e.getMessage());
-									}
-									Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
-									if (restaurantes==null){
-										System.out.println("En este momento no podemos realizar la operación");
 
-									}else{
-										System.out.println("Listado de restaurantes");
-										for (i=0;i<restaurantes.size();i++)
-											System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+								}else{
+
+									if(direc.equals("NO")){
 										try{
-										System.out.println("que restaurante quieres, escribe su codigo?");
-										codigo = Integer.parseInt(br.readLine());
+											do{
+												System.out.println("dime un codigo postal: ");
+												codpos = Integer.parseInt(br.readLine());
+											}while(codpos<0 || codpos>99999);
 										}catch(NumberFormatException e){
 											System.out.println(e.getMessage());
 										}
-										Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
-										for (i=0;i<menus.size();i++)
-											System.out.println(menus.get(i).toString());
-										//agregar escoger menu comida
-									}}}}
+										Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+										if (restaurantes==null){
+											System.out.println("En este momento no podemos realizar la operación");
 
+										}else{
+											System.out.println("Listado de restaurantes");
+											for (i=0;i<restaurantes.size();i++)
+												System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+											try{
+												System.out.println("que restaurante quieres, escribe su codigo?");
+												codigo = Integer.parseInt(br.readLine());
+											}catch(NumberFormatException e){
+												System.out.println(e.getMessage());
+											}
+											Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+											for (i=0;i<menus.size();i++)
+												System.out.println(menus.get(i).toString());
+											//agregar escoger menu comida
+											try{
+												do{
+													System.out.println("para salir mete un 0");
+													System.out.println("o dime el plato que quieres agregar"); 
+													salida = Integer.parseInt(br.readLine());
+												}while(salida!=0);
+											}catch(NumberFormatException e){
+												System.out.println(e.getMessage());
+											}
+										}}}}
+
+							if(usuarior.getTipo().equals("admin")){
+
+
+							}
+							else{
+								if(usuarior.getTipo().equals("resta")){
+
+								}}
+						}
 					break;
+
+
 
 				}
 				//usuario no registrado
@@ -146,16 +167,16 @@ public class MainProyecto {
 						System.out.println("Listado de restaurantes");
 						for (i=0;i<restaurantes.size();i++)
 							System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
-					try{	
-						System.out.print("dime el restaurante que quieres");
-						codres = Integer.parseInt(br.readLine());
-					}catch(NumberFormatException e){
-						System.out.println(e.getMessage());
-					}
-					Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
-					for (i=0;i<menus.size();i++)
-						System.out.println(menus.get(i).toString());
-					//agregar escoger menu comida
+						try{	
+							System.out.print("dime el restaurante que quieres");
+							codres = Integer.parseInt(br.readLine());
+						}catch(NumberFormatException e){
+							System.out.println(e.getMessage());
+						}
+						Vector <Menu> menus=bdmenu.listarmenusXrestaurante(codres);
+						for (i=0;i<menus.size();i++)
+							System.out.println(menus.get(i).toString());
+						//agregar escoger menu comida
 					}
 					break;
 				}
