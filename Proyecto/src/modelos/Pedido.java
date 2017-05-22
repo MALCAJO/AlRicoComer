@@ -9,14 +9,16 @@ public class Pedido {
 	private int cod_personal;
 	private int cod_restaurante;
 	private String direccion_entrega;
+	private double importe_total;
 	
 	public Pedido(int n_pedido, LocalDate fecha_pedido, int cod_personal, int cod_restaurante,
-			String direccion_entrega) {
+			String direccion_entrega, double importe_total) {
 		this.n_pedido = n_pedido;
-		this.fecha_pedido = LocalDate.now();;
+		this.fecha_pedido = LocalDate.now();
 		this.cod_personal = cod_personal;
 		this.cod_restaurante = cod_restaurante;
 		this.direccion_entrega = direccion_entrega;
+		this.importe_total= 0;
 	}
 	/**
 	 * @return the n_pedido
@@ -71,6 +73,15 @@ public class Pedido {
 	 */
 	public void setDireccion_entrega(String direccion_entrega) {
 		this.direccion_entrega = direccion_entrega;
+	}
+	/**
+	 * @return String de pedido 
+	 */
+	@Override
+	public String toString() {
+		return "Pedido [n_pedido=" + n_pedido + ", fecha_pedido=" + fecha_pedido + ", cod_personal=" + cod_personal
+				+ ", cod_restaurante=" + cod_restaurante + ", direccion_entrega=" + direccion_entrega
+				+ ", importe_total=" + importe_total + "]";
 	}
 	
 	

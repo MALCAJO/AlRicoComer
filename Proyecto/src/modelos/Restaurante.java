@@ -7,16 +7,32 @@ public class Restaurante {
 	private int cod_postal;
 	private int telefono;
 	private String cif;
+	private String nombre;
 	
-	public Restaurante(String direccion, int cod_restaurante, int cod_postal,int telefono,String cif) {
+	public Restaurante(String direccion, String nombre, int cod_restaurante, int cod_postal,int telefono,String cif) {
 		super();
 		this.direccion = direccion;
+		this.nombre = nombre;
 		this.cod_restaurante = cod_restaurante;
 		this.cod_postal = cod_postal;
 		this.telefono = telefono;
 		this.cif = cif;
 	}
 	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	/**
 	 * @return the direccion
 	 */
@@ -82,8 +98,7 @@ public class Restaurante {
 	 */
 	@Override
 	public String toString() {
-		return "Restaurante [direccion=" + direccion + ", cod_restaurante=" + cod_restaurante + ", cod_postal="
-				+ cod_postal + ", telefono=" + telefono + ", cif=" + cif + "]";
+		return "Restaurante: " + nombre + ", en: "+direccion+", "+cod_postal+". Código: "+cod_restaurante+", télefono: " +telefono;
 	}
 	
 }

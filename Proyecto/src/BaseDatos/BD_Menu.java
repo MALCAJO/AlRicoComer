@@ -36,8 +36,8 @@ public class BD_Menu extends BD_Conecta{
 		}
 	}
 //Método para borar menus de un restaurante	
-	public int borrar_menu(Menu me){
-		String cadenaSQL="DELETE FROM menu WHERE cod_plato='"+me.getCod_plato()+"' ";
+	public int borrar_menu(int cod_menu){
+		String cadenaSQL="DELETE FROM menu WHERE cod_plato='"+cod_menu+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -69,7 +69,7 @@ public class BD_Menu extends BD_Conecta{
 		}
 	}
 //metodo que muestra los menus de un restaurante
-	public  Vector<Menu> listarmenusXrestaurante(String cod_restaurante){
+	public  Vector<Menu> listarmenusXrestaurante(int cod_restaurante){
 		String cadenaSQL="SELECT * from menu WHERE cod_restaurante='"+cod_restaurante+"'";
 		Vector<Menu> listaMenu=new Vector<Menu>();
 		try{
@@ -77,7 +77,7 @@ public class BD_Menu extends BD_Conecta{
 			s=c.createStatement();
 			reg=s.executeQuery(cadenaSQL);
 			while ( reg.next()){
-				listaMenu.add(new Menu(reg.getDouble("precio"),reg.getString("nombre"),reg.getInt("cod_restaurante"),reg.getInt("cod_plato")));
+				listaMenu.add(new Menu(reg.getDouble("precio"),reg.getString("nombre"),reg.getInt("cod_restaurante"),reg.getInt("cod_plato") ) );
 			}
 			s.close();
 			this.cerrar();

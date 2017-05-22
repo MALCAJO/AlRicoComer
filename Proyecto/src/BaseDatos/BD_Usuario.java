@@ -17,8 +17,7 @@ public class BD_Usuario extends BD_Conecta{
 	
 //Método para dar de alta un usuario.
 	public  int alta_usuario( Usu_Registrado usu){	
-		String cadenaSQL="INSERT INTO usuario_registrado VALUES('" + usu.getEmail()+ "','" +
-		usu.getContraseña()+"','"+ usu.getNombre() +"','"+ usu.getApellidos()+"','"+ usu.getDireccion_habitual()+"','"+ usu.getCod_postal() +"','"+ usu.getCod_postal() +"')"; 				
+		String cadenaSQL="INSERT INTO usuario_registrado VALUES('" + usu.getEmail()+ "','" +usu.getContraseña()+"','"+ usu.getNombre() +"','"+ usu.getApellidos()+"','"+ usu.getDireccion_habitual()+"','"+ usu.getCod_postal() +"','"+ usu.getCod_oferta() +"','"+usu.getTipo()+"')"; 				
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -64,10 +63,31 @@ public class BD_Usuario extends BD_Conecta{
 			return -1;
 		}
 	}
+//Método para comprobar si un email esta en uso en la BBDD
+	public int comprobar_email(String email){
+		String cadenaSQL="SELECT * FROM usuario_registrado WHERE email = '"+email+"' ";				
+		try{
+			this.abrir();
+			s=c.createStatement();
+			reg=s.executeQuery(cadenaSQL);	
+			if(reg.next()){
+				s.close();
+				this.cerrar();
+				return 1;
+			}
+			s.close();
+			this.cerrar();
+			return 0;			
+		}
+		catch ( SQLException e){
+			this.cerrar();
+			return -1;
+		}				
+	}
 //Método para verificar el login y que devuelve un objeto usuario
 	public Usu_Registrado verificar_login(String email, String contrasena){
 		
-		String cadenaSQL="SELECT * From usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
+		String cadenaSQL="SELECT * FROM usuario_registrado WHERE email = '" +email +"'AND contrasena ='"+ contrasena+"'";
 		Usu_Registrado Usuario=new Usu_Registrado(email,contrasena);		
 		try{
 			this.abrir();
@@ -75,13 +95,14 @@ public class BD_Usuario extends BD_Conecta{
 			reg=s.executeQuery(cadenaSQL);
 			if ( reg.next()){
 				
-				Usuario.setCod_postal(reg.getInt("cod_oferta"));
+				Usuario.setCod_oferta(reg.getInt("cod_oferta"));
 				Usuario.setEmail(reg.getString("email"));
 				Usuario.setCod_postal(reg.getInt("cod_postal"));
 				Usuario.setNombre(reg.getString("nombre"));
 				Usuario.setApellidos(reg.getString("apellidos"));
 				Usuario.setContraseña(reg.getString("contrasena"));
-				Usuario.setDireccion_habitual(reg.getString("direccion"));							
+				Usuario.setDireccion_habitual(reg.getString("direccion"));
+				Usuario.setTipo(reg.getString("tipo"));
 			}
 			s.close();
 			this.cerrar();
