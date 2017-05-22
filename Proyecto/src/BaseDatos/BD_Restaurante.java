@@ -91,13 +91,16 @@ public class BD_Restaurante extends BD_Conecta{
 	 * @param direccion
 	 * @return
 	 */
-	/*public int buscar_codrestaurante(String nombre, String direccion){
+	public int buscar_codrestaurante(String nombre, String direccion){
 		String cadenaSQL="SELECT cod_restaurante FROM restaurante WHERE nombre = '"+nombre+"' AND direccion = '"+direccion+"'";
 		int cod=0;
 		try{
 			this.abrir();
 			s=c.createStatement();
-			cod=s.executeQuery(cadenaSQL);				
+			reg=s.executeQuery(cadenaSQL);	
+			if ( reg.next()){
+				cod=reg.getInt("cod_restaurante");
+			}
 			s.close();
 			this.cerrar();
 			return cod;			
@@ -106,7 +109,7 @@ public class BD_Restaurante extends BD_Conecta{
 			this.cerrar();
 			return -1;
 		}
-	}*/
+	}
 /**
  * lista todos los restaurantes
  * @return

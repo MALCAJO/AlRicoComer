@@ -104,8 +104,8 @@ public class Main_pruebas {
 									}
 								}
 								//si es un usuario tipo restaurante por aqui..
-								/*if(usuarior.getTipo().equals("resta")){
-									codres= bdrest.buscar_codrestaurante(usuarior.getNombre(), usuarior.getDireccion_entrega());
+								if(usuarior.getTipo().equals("resta")){
+									codres= bdrest.buscar_codrestaurante(usuarior.getNombre(), usuarior.getDireccion_habitual());
 									Vector <Menu>  menus=bdmenu.listarmenusXrestaurante(codres);
 									System.out.println("Opciones:");
 									System.out.println("1- Añadir nuevo menu.");
@@ -154,7 +154,7 @@ public class Main_pruebas {
 								//el administrador
 								else{
 									System.out.println("eres el admin");
-								}*/
+								}
 							}
 						}
 						
