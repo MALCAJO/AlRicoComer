@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2017 a las 08:38:08
+-- Tiempo de generación: 22-05-2017 a las 08:12:44
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `linea_pedido` (
   `cod_plato` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `fecha_hora` date NOT NULL,
+  `precio` double(5,2) NOT NULL,
   PRIMARY KEY (`num_pedido`),
   KEY `fecha_hora` (`fecha_hora`),
   KEY `cod_plato` (`cod_plato`)
@@ -64,7 +65,16 @@ CREATE TABLE IF NOT EXISTS `menu` (
   PRIMARY KEY (`cod_plato`),
   KEY `cod_restaurante` (`cod_restaurante`),
   KEY `cod_restaurante_2` (`cod_restaurante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `menu`
+--
+
+INSERT INTO `menu` (`cod_plato`, `cod_restaurante`, `precio`, `nombre`) VALUES
+(1, 1, 13, 'arroz tres delicias'),
+(3, 2, 6, 'perrito caliente'),
+(4, 2, 5, 'hamburguesa del pobre');
 
 -- --------------------------------------------------------
 
@@ -84,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `ofertas` (
 --
 
 INSERT INTO `ofertas` (`cod_oferta`, `descuento`, `descripcion`) VALUES
+(1, 0, 'no_oferta'),
 (52895, 5, 'oferta usuario nuevo');
 
 -- --------------------------------------------------------
@@ -97,6 +108,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `fecha_hora` date NOT NULL,
   `cod_restaurante` int(11) DEFAULT NULL,
   `cod_personal` int(11) NOT NULL,
+  `importe_total` double(5,2) NOT NULL,
   PRIMARY KEY (`num_pedido`),
   KEY `cod_personal` (`cod_personal`),
   KEY `cod_restaurante` (`cod_restaurante`)
@@ -125,20 +137,21 @@ CREATE TABLE IF NOT EXISTS `personal` (
 
 CREATE TABLE IF NOT EXISTS `restaurante` (
   `cod_restaurante` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cod_postal` int(5) DEFAULT NULL,
   `telefono` int(9) DEFAULT NULL,
   `cif` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`cod_restaurante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `restaurante`
 --
 
-INSERT INTO `restaurante` (`cod_restaurante`, `nombre`, `direccion`, `cod_postal`, `telefono`, `cif`) VALUES
-(1, 'chino mandalin', 'langstrass', 28007, 123456789, '123456789x');
+INSERT INTO `restaurante` (`cod_restaurante`, `direccion`, `cod_postal`, `telefono`, `cif`, `nombre`) VALUES
+(1, 'oeste 3', 28029, 123456789, '123456789a', 'primer restaurante'),
+(2, 'norte 1', 28029, 987654321, '123456789b', 'segundo restaurante');
 
 -- --------------------------------------------------------
 
@@ -154,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `usuario_registrado` (
   `direccion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cod_postal` int(5) NOT NULL,
   `cod_oferta` int(11) NOT NULL,
+  `tipo` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`email`),
   KEY `cod_oferta` (`cod_oferta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -162,8 +176,11 @@ CREATE TABLE IF NOT EXISTS `usuario_registrado` (
 -- Volcado de datos para la tabla `usuario_registrado`
 --
 
-INSERT INTO `usuario_registrado` (`email`, `contrasena`, `nombre`, `apellidos`, `direccion`, `cod_postal`, `cod_oferta`) VALUES
-('a.tatschke@gmail.com', 'ricocomer', 'alejandro', 'tatschke', 'calle tu madre 89', 28007, 52895);
+INSERT INTO `usuario_registrado` (`email`, `contrasena`, `nombre`, `apellidos`, `direccion`, `cod_postal`, `cod_oferta`, `tipo`) VALUES
+('admin@admin.com', '1234', 'admin', 'admin', 'admin 3', 0, 1, 'admin'),
+('coy@gmail.com', '1234', 'carlos', 'olaya', 'san benito 2', 28029, 52895, 'usuar'),
+('resta@resta.com', '1234', 'primer restaurante', 'chino', 'oeste 3', 28029, 1, 'resta'),
+('resta2@resta.com', '1234', 'segundo restaurante', 'burger', 'norte 1', 28029, 1, 'resta');
 
 -- --------------------------------------------------------
 
