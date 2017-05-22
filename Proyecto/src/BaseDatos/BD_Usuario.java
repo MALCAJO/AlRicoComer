@@ -32,8 +32,8 @@ public class BD_Usuario extends BD_Conecta{
 		}
 	}
 //Método para borrar usuario.
-	public int borrar_usuario( Usu_Registrado usu){
-		String cadenaSQL="DELETE FROM usuario_registrado WHERE `email` = '" + usu.getEmail()+"' ";
+	public int borrar_usuario(String email){
+		String cadenaSQL="DELETE FROM usuario_registrado WHERE `email` = '" + email+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -48,8 +48,8 @@ public class BD_Usuario extends BD_Conecta{
 		}
 	}
 //Método para cambiar contraseña de  usuario.
-	public int editar_contra_usuario( Usu_Registrado usu){
-		String cadenaSQL="UPDATE usuario_registrado SET 'contrasena'= '" + usu.getContraseña() + "' WHERE `email`= '" + usu.getEmail()+"' ";
+	public int editar_contra_usuario( String email,String contraseñaN, String contraseñaV){
+		String cadenaSQL="UPDATE usuario_registrado SET 'contrasena'= '" + contraseñaN + "' WHERE `email`= '" +email+"'AND `contrasena`= '" +contraseñaV+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();

@@ -72,8 +72,8 @@ public class BD_Oferta extends BD_Conecta{
 		}
 	}
 	
-	public int borrar_oferta(Oferta of){
-		String cadenaSQL="DELETE FROM oferta WHERE cod_oferta='"+of.getCod_oferta()+"' ";
+	public int borrar_oferta(int cod_oferta){
+		String cadenaSQL="DELETE FROM oferta WHERE cod_oferta='"+cod_oferta+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();
