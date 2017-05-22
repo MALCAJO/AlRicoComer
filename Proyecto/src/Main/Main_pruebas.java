@@ -221,7 +221,7 @@ public class Main_pruebas {
 					System.out.println("2. Listar todos los restaurantes de la aplicación");
 					System.out.println("3. Salir sin listar");	
 					opc = sc.nextInt();
-					
+					//CARLOS ES UN MAL JEFE NO TIENE APTITUDES DE LIDERAZGO NO SABE LLEVAR UN EQUIPO
 					
 					switch(opc){
 						case 1://lista los restaurantes solo de un codigo postal
