@@ -222,7 +222,7 @@ public class Main_pruebas {
 					System.out.println("3. Salir sin listar");	
 					opc = sc.nextInt();
 					
-					
+	//Marina no sabe escribir				
 					switch(opc){
 						case 1://lista los restaurantes solo de un codigo postal
 							System.out.println("introduce el codigo postal en el que estas interesado:");
