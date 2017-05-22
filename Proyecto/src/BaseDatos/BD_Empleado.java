@@ -31,8 +31,8 @@ public class BD_Empleado extends BD_Conecta {
 			}
 	}
 	
-	public int bajaEmpleado(Empleado em){
-		String cadenaSQL="DELETE FROM empleado WHERE cod_personal='"+em.getCod_personal()+"' ";
+	public int bajaEmpleado(int codPer){
+		String cadenaSQL="DELETE FROM empleado WHERE cod_personal='"+codPer+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();

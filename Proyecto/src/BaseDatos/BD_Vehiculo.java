@@ -32,8 +32,8 @@ public class BD_Vehiculo extends BD_Conecta{
 			}
 	}
 	
-	public int bajaVehiculo(Vehiculo ve){
-		String cadenaSQL="DELETE FROM vehiculo WHERE cod_personal='"+ve.getMatricula()+"' ";
+	public int bajaVehiculo(String matricula){
+		String cadenaSQL="DELETE FROM vehiculo WHERE matricula='"+matricula+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();
