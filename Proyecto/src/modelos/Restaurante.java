@@ -33,6 +33,7 @@ public class Restaurante {
 
 	/**
 	 * @return the nombre
+	 * 
 	 */
 	public String getNombre() {
 		return nombre;

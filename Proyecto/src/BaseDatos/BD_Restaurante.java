@@ -43,6 +43,7 @@ public class BD_Restaurante extends BD_Conecta{
  * Método para borrar un restaurante.
  * @param resta
  * @return
+ * 
  */
 	public int borrar_Restaurante(int codRestaurante){
 		String cadenaSQL="DELETE FROM restaurante WHERE `email` = '" + codRestaurante+"' ";
