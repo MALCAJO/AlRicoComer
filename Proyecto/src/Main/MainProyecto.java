@@ -15,7 +15,7 @@ public class MainProyecto {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-
+//prueba
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int cod_postal, menu = 0, codres=0;
