@@ -136,11 +136,99 @@ public class MainProyecto {
 										}}}}
 
 							if(usuarior.getTipo().equals("admin")){
+								try{
+									do{
+										System.out.println("1. añadir restaurante");
+										System.out.println("2. borrar restaurante");
+										System.out.println("3. borrar usuario");
+										System.out.println("4. añadir empleado");
+										System.out.println("4. borrar empleado");
+										System.out.println("5.añadir oferta");
+										System.out.println("6. borrar oferta");
+										System.out.println("7. alta vehiculo");
+										System.out.println("8. baja vehiculo");
+										System.out.println("9. modificar matricula");
+										salida = Integer.parseInt(br.readLine());
+									}while(salida!=10);
+								}catch(NumberFormatException e){
+									System.out.println(e.getMessage());
+								}
+
+								switch(salida){
+
+								case 1:
+									System.out.println("direccion");
+									direccion = br.readLine();
+									System.out.println("nombre");
+									nombre = br.readLine();
+									try{
+									System.out.println("codigo postal");
+									codpos = Integer.parseInt(br.readLine());
+									}catch(NumberFormatException e){
+										System.out.println(e.getMessage());
+									}
+									try{
+									System.out.println("telefono");
+									telefono = Integer.parseInt(br.readLine());
+									}catch(NumberFormatException e){
+										System.out.println(e.getMessage());
+									}
+									
+									break;
+
+								case 2:
+
+									break;
+
+								case 3:
+
+									break;	
+
+								case 4:
+
+									break;
+
+								case 5:
+
+									break;
+
+								case 6:
+
+									break;
+
+								case 7:
+
+									break;
+
+								case 8:
+
+									break;
+
+								case 9:
+
+									break;
+
+								default:
+
+									break;
+
+								}
 
 
 							}
 							else{
 								if(usuarior.getTipo().equals("resta")){
+									try{
+										do{
+											//con nombre y direccion obtener cod rest
+											System.out.println("1. añadir menu");
+											System.out.println("2. borrar menu");
+											System.out.println("3. cambiar precio");
+											salida = Integer.parseInt(br.readLine());
+										}while(salida!=4);
+									}catch(NumberFormatException e){
+										System.out.println(e.getMessage());
+									}
 
 								}}
 						}
