@@ -12,6 +12,7 @@ import modelos.*;
 
 public class MainProyecto {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -22,8 +23,8 @@ public class MainProyecto {
 		String contrasena;
 		int codpos=0;
 		String direc, regist;
-		String direccion;
-		int i=0;
+		String direccion, nombre, apellido;
+		int i=0,filas,telefono=0, codigo = 0,salida=0;
 
 		BD_Menu bdmenu=new BD_Menu("base_propiedades.xml");
 		BD_Restaurante bdrest=new BD_Restaurante("base_propiedades.xml");		
@@ -45,18 +46,17 @@ public class MainProyecto {
 				System.exit(0);
 			}
 
+
 			switch (menu) {
 
 			case 1:
 
-				//cambiar a usuario registrado o no.
-
-				do{
+				do{//usuario registrado o no
 					System.out.println("eres un usuario registrado?");
 					regist = br.readLine().toUpperCase();
 				}while(!regist.equals("SI") && !regist.equals("NO"));
 
-
+				//usuario registrado
 				if (regist.equals("SI")){
 					System.out.println("login");
 					System.out.println("email:");
@@ -75,6 +75,7 @@ public class MainProyecto {
 								System.out.println("quieres realizar el pedido en tu direccion habitual? ");
 								direc = br.readLine().toUpperCase();
 							}while(!direc.equals("SI")&!direc.equals("NO"));
+
 							if (direc.equals("SI")){
 								//quitar los syso
 								System.out.println(direccion = usuarior.getDireccion_habitual());
@@ -84,49 +85,56 @@ public class MainProyecto {
 								for (i=0;i<restaurantes.size();i++)
 									System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
 
+								System.out.println("que restaurante quieres, escribe su codigo?");
+								codigo = Integer.parseInt(br.readLine());
+								Vector <Menu> menus = bdmenu.listarmenusXrestaurante(codigo);
+								System.out.println(menus);
+								do{
+									System.out.println("salida 4");
+									
+								}while(salida==4);
+								
 
 							}else{
+
 								if(direc.equals("NO")){
+									try{
+										do{
+											System.out.println("dime un codigo postal: ");
+											codpos = Integer.parseInt(br.readLine());
+										}while(codpos<0 || codpos>99999);
+									}catch(NumberFormatException e){
+										System.out.println(e.getMessage());
+									}
+									Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
+									if (restaurantes==null){
+										System.out.println("En este momento no podemos realizar la operación");
 
-								}
-							}
-							if(direc.equals("NO")){
-								try{
-									do{
-										System.out.println("dime un codigo postal: ");
-										codpos = Integer.parseInt(br.readLine());
-									}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
-								}catch(NumberFormatException e){
-									System.out.println(e.getMessage());
-								}
-								Vector <Restaurante> restaurantes=bdrest.listarRestaurantesXzona(codpos);
-								if (restaurantes==null){
-									System.out.println("En este momento no podemos realizar la operación");
+									}else{
+										System.out.println("Listado de restaurantes");
+										for (i=0;i<restaurantes.size();i++)
+											System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
+										try{
+										System.out.println("que restaurante quieres, escribe su codigo?");
+										codigo = Integer.parseInt(br.readLine());
+										}catch(NumberFormatException e){
+											System.out.println(e.getMessage());
+										}
+										Vector <Menu> menus = bdmenu.listarmenusXrestaurante(codigo);
+										System.out.println(menus);
 
-								}else{
-									System.out.println("Listado de restaurantes");
-									for (i=0;i<restaurantes.size();i++)
-										System.out.println((i+1)+ ".- "+restaurantes.get(i).toString());
-									System.out.print("dime el restaurante que quieres");
-									codres = Integer.parseInt(br.readLine());
-
-								}}}
-
-
-
-
+									}}}}
 
 					break;
 
 				}
-				//problem
-//abvhnjcghjkcgkvhjkcvhjkcg
+				//usuario no registrado
 				if(regist.equals("NO")){
 					try{
-						//do{
-						System.out.println("dime un codigo postal: ");
-						codpos = Integer.parseInt(br.readLine());
-						//}while(codpos<0 || codpos>99999 || codpos+"".length()!=5);
+						do{
+							System.out.println("dime un codigo postal: ");
+							codpos = Integer.parseInt(br.readLine());
+						}while(codpos<0 || codpos>99999);
 					}catch(NumberFormatException e){
 						System.out.println(e.getMessage());
 					}
@@ -141,7 +149,7 @@ public class MainProyecto {
 						System.out.print("dime el restaurante que quieres");
 						codres = Integer.parseInt(br.readLine());
 
-					}//error
+					}
 					break;
 				}
 
@@ -151,7 +159,62 @@ public class MainProyecto {
 
 			case 2:
 
+				System.out.println("A continuación te pediremos los datos para poder realizar el registro.");
 
+				System.out.println("Cual es tu nombre?");
+				nombre=br.readLine();
+				System.out.println("Apellido?");
+				apellido = br.readLine();
+				do{
+
+					System.out.println("Email: ");//hacer comprobacion de email.
+					email=br.readLine();
+					filas=bdusu.comprobar_email(email);
+					switch(filas){
+					case 0:
+						System.out.println("Email disponible.");
+						break;
+					case 1:
+						System.out.println("El email introducido ya pertenece a un usuario registrado");
+						break;
+					case -1:
+						System.out.println("Lo sentimo, ha ocurrido un problema durante el registro. Vuelva a intentarlo.");
+						break;							
+					}
+				}while(filas!=0);	
+				System.out.println("Contraseña:");
+				contrasena= br.readLine();
+				System.out.println("Direccion:");
+				direccion=br.readLine();
+				try{
+					do{
+						System.out.println("Código postal");
+						codpos=Integer.parseInt(br.readLine());
+					}while(codpos<0 || codpos>99999);
+				}catch(NumberFormatException e){
+					System.out.println(e.getMessage());
+				}
+				try{
+					System.out.println("Y por último, teléfono:");
+					telefono=Integer.parseInt(br.readLine());
+				}catch(NumberFormatException e){
+					System.out.println(e.getMessage());
+				}
+				String tipo="usuar";
+				//creamos el usuario_registrado nuevo
+				Usu_Registrado usu=new Usu_Registrado( direccion, telefono,email, codpos, nombre, apellido, contrasena, direccion, 1,tipo);
+				filas=bdusu.alta_usuario(usu);
+				switch(filas){
+				case 1:
+					System.out.println("Registro completado con exito");
+					break;
+				case 0:
+					System.out.println("El registro no se ha podido realizar.");
+					break;
+				case -1:
+					System.out.println("Lo sentimo, ha ocurrido un problema durante el registro. Vuelva a intentarlo.");
+					break;							
+				}
 
 
 				break;
