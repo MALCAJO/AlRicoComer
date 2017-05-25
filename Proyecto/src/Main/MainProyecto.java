@@ -24,7 +24,7 @@ public class MainProyecto {
 		int codpos=0;
 		String direc, regist;
 		String direccion, nombre, apellido;
-		int i=0,filas,telefono=0, codigo = 0,salida=0;
+		int i=0,filas,telefono=0, codigo = 0,salida=0, cod_personal=100;
 
 		BD_Menu bdmenu=new BD_Menu("base_propiedades.xml");
 		BD_Restaurante bdrest=new BD_Restaurante("base_propiedades.xml");		
