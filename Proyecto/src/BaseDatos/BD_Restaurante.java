@@ -25,8 +25,7 @@ public class BD_Restaurante extends BD_Conecta{
  * @return
  */
 	public  int añadir_Restaurante( Restaurante resta){	
-		String cadenaSQL="INSERT INTO restaurante VALUES('" + resta.getCod_restaurante() + "','" +
-				resta.getDireccion()+"','"+ resta.getCod_postal() +"','"+ resta.getTelefono() + "','"+ resta.getCif() +"')"; 				
+		String cadenaSQL="INSERT (direccion,cod_postal,telefono,cif,nombre) INTO restaurante VALUES('" +resta.getDireccion()+"','"+ resta.getCod_postal() +"','"+ resta.getTelefono() + "','"+ resta.getCif() +resta.getNombre() +"')"; 				
 		try{
 			this.abrir();
 			s=c.createStatement();
@@ -44,9 +43,10 @@ public class BD_Restaurante extends BD_Conecta{
  * Método para borrar un restaurante.
  * @param resta
  * @return
+ * 
  */
-	public int borrar_Restaurante( Restaurante resta){
-		String cadenaSQL="DELETE FROM restaurante WHERE `email` = '" + resta.getCod_restaurante()+"' ";
+	public int borrar_Restaurante(int codRestaurante){
+		String cadenaSQL="DELETE FROM restaurante WHERE `email` = '" + codRestaurante+"' ";
 		try{
 			this.abrir();
 			s=c.createStatement();

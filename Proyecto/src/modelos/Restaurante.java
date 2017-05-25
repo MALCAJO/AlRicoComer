@@ -19,8 +19,21 @@ public class Restaurante {
 		this.cif = cif;
 	}
 	
+	
+	public Restaurante(String direccion, int cod_postal, int telefono, String cif, String nombre) {
+		super();
+		this.direccion = direccion;
+		this.cod_postal = cod_postal;
+		this.telefono = telefono;
+		this.cif = cif;
+		this.nombre = nombre;
+		this.cod_restaurante=0;
+	}
+
+
 	/**
 	 * @return the nombre
+	 * 
 	 */
 	public String getNombre() {
 		return nombre;
